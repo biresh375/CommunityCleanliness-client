@@ -1,62 +1,86 @@
-import React, { useState } from "react";
-import { Link } from "react-router";
+import React, { use, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router";
 
 import { FcGoogle } from "react-icons/fc";
 
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
+import { AuthContext } from "../../Context/AuthContext";
+import Swal from "sweetalert2";
 
 const Login = () => {
-  // const { singIn, setUser, error, setError, setShow, show } = use(AuthContext);
+  const { singIn, googleSignIn, setUser } = use(AuthContext);
   const [show, setShow] = useState(false);
-  // console.log(show);
-  // const emailRef = useRef(null);
+  const [error, setError] = useState("");
 
-  // const location = useLocation();
+  const location = useLocation();
 
-  // const navigate = useNavigate();
-  // const handleLogin = (e) => {
-  //   e.preventDefault();
-  //   setError("");
-  //   const form = e.target;
-  //   const email = form.email.value;
-  //   const password = form.password.value;
+  const navigate = useNavigate();
+  const handleLogin = (e) => {
+    e.preventDefault();
+    setError("");
+    const form = e.target;
+    const email = form.email.value;
+    const password = form.password.value;
 
-  //   const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
 
-  //   if (!passwordRegex.test(password)) {
-  //     setError(
-  //       "Password must have at least one uppercase letter, one lowercase letter, and be at least 6 characters long."
-  //     );
-  //     return;
-  //   }
+    if (!passwordRegex.test(password)) {
+      setError(
+        "Password must have at least one uppercase letter, one lowercase letter, and be at least 6 characters long."
+      );
+      return;
+    }
 
-  //   // console.log({email, password});
-  //   singIn(email, password)
-  //     .then((result) => {
-  //       const user = result.user;
+    singIn(email, password)
+      .then((result) => {
+        const user = result.user;
+        setUser(user);
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "Sucessfully login",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        navigate(`${location.state ? location.state : "/"}`);
+      })
+      .catch((error) => {
+        setError(error.code);
+        Swal.fire({
+          position: "top-end",
+          icon: "error",
+          title: `${error.code}`,
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      });
+  };
+  const handleGoogleSignin = () => {
+    googleSignIn()
+      .then((result) => {
+        const user = result.user;
+        setUser(user);
 
-  //       toast.success(" sucessfully Login");
-  //       navigate(`${location.state ? location.state : "/"}`);
-  //     })
-  //     .catch((error) => {
-  //       setError(error.code);
-  //       toast.error(error.message);
-  //     });
-  // };
-  // const handleGoogleSignin = () => {
-  //   signInWithPopup(auth, googleprovider)
-  //     .then((result) => {
-  //       const user = result.user;
-  //       setUser(user);
-
-  //       navigate(`${location.state ? location.state : "/"}`);
-  //       toast.success("Sucessfully signIn with Google");
-  //     })
-  //     .catch((error) => {
-  //       const errorcode = error.code;
-  //       toast.error(errorcode);
-  //     });
-  // };
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "Sucessfully login with google",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        navigate(`${location.state ? location.state : "/"}`);
+      })
+      .catch((error) => {
+        const errorcode = error.code;
+        Swal.fire({
+          position: "top-end",
+          icon: "error",
+          title: `${errorcode}`,
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      });
+  };
   const handleShow = (e) => {
     e.preventDefault();
     setShow(!show);
@@ -67,16 +91,12 @@ const Login = () => {
         <p className="pt-2.5 text-2xl font-semibold text-center">
           Login your account
         </p>
-        <form
-          //  onSubmit={handleLogin}
-          className="card-body"
-        >
+        <form onSubmit={handleLogin} className="card-body">
           <div className="divider"></div>
           <fieldset className="fieldset">
             {/* email */}
             <label className="label">Email</label>
             <input
-              // ref={emailRef}
               required
               type="email"
               name="email"
@@ -108,7 +128,7 @@ const Login = () => {
                 Forget Password?
               </Link>
             </div>
-            {/* <div>{error && <p className="text-red-700">{error}</p>}</div> */}
+            <div>{error && <p className="text-red-700">{error}</p>}</div>
             <button
               type="submit"
               className="btn btn-primary text-white px-3 py-1 rounded-md mt-4"
@@ -119,7 +139,7 @@ const Login = () => {
               <p>or</p>
             </div>
             <button
-              // onClick={handleGoogleSignin}
+              onClick={handleGoogleSignin}
               className="btn  btn-outline btn-primary w-full"
             >
               <FcGoogle size={24} /> Login with Google

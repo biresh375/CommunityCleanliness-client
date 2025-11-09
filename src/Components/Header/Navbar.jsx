@@ -1,11 +1,13 @@
-import React from "react";
+import React, { use } from "react";
 import { Link, NavLink } from "react-router";
 import logo from "../../assets/logo.png";
 import { FaUserCircle } from "react-icons/fa";
 import Container from "../Container/Container";
 import { RiArrowDropRightFill } from "react-icons/ri";
+import { AuthContext } from "../../Context/AuthContext";
+import Swal from "sweetalert2";
 const Navbar = () => {
-  const user = null;
+  const { user, logOut } = use(AuthContext);
   const navLinks = (
     <>
       <li>
@@ -45,6 +47,21 @@ const Navbar = () => {
       )}
     </>
   );
+  const handleLogout = () => {
+    logOut()
+      .then(() => {
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "Sucessfully Logout",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      })
+      .catch((err) => {
+        alert(err.message);
+      });
+  };
 
   return (
     <div className=" bg-secondary shadow-sm">
@@ -125,7 +142,7 @@ const Navbar = () => {
                     </li>
                     <li>
                       <button
-                        // onClick={logOut}
+                        onClick={handleLogout}
                         className="text-red-600 hover:bg-red-50"
                       >
                         Logout
