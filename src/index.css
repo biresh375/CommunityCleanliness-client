@@ -5,8 +5,8 @@
 @plugin "daisyui/theme" {
   name: "light";
   default: true;
-  --color-primary: blue;
-  --color-secondary: teal;
+  --color-primary: #00549f;
+  --color-secondary: #e7f7fe;
 }
 /* @plugin "daisyui" {
   themes: light --default, dark --prefersdark;
@@ -18,4 +18,8 @@
   font-weight: 400;
   font-style: normal;
 }
-
+.active{
+  font-weight: 600;
+  text-decoration: underline;
+  color: #00549F;
+}
