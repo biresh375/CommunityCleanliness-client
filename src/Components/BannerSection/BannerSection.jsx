@@ -26,16 +26,15 @@ const slides = [
 const BannerSection = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
-  // Auto slide every 5 seconds
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % slides.length);
-    }, 5000);
+    }, 3000);
     return () => clearInterval(timer);
   }, []);
 
   return (
-    <section className="relative w-full h-[60vh] overflow-hidden shadow-md">
+    <section className="relative mb-10 w-full h-[60vh] overflow-hidden shadow-md">
       {slides.map((slide, index) => (
         <div
           key={slide.id}
@@ -43,17 +42,14 @@ const BannerSection = () => {
             index === currentSlide ? "opacity-100 z-10" : "opacity-0 z-0"
           }`}
         >
-          {/* Background Image */}
           <img
             src={slide.image}
             alt={slide.title}
             className="w-full h-full object-cover"
           />
 
-          {/* Overlay */}
           <div className="absolute inset-0 bg-[#0a0a0aa9]   bg-opacity-50"></div>
 
-          {/* Text Content */}
           <div className="absolute inset-0 flex flex-col justify-center items-center text-center px-6">
             <h2 className="text-4xl md:text-5xl font-bold text-white drop-shadow-lg mb-4 animate-fade-in">
               {slide.title}
@@ -65,7 +61,6 @@ const BannerSection = () => {
         </div>
       ))}
 
-      {/* Dots Navigation */}
       <div className="absolute bottom-6 w-full flex justify-center gap-3">
         {slides.map((_, index) => (
           <button
