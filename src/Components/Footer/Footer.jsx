@@ -4,7 +4,7 @@ import Container from "../Container/Container";
 
 const Footer = () => {
   return (
-    <footer className="bg-linear-to-r from-green-600 to-[#00549F] text-white py-10 mt-10 ">
+    <footer className="bg-linear-to-r from-green-600 to-[#00549F] text-white py-10  ">
       {/* Top Section */}
       <Container>
         <div className=" px-5 grid grid-cols-1 md:grid-cols-3 gap-8">

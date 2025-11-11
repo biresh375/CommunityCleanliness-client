@@ -38,11 +38,16 @@ const IssueDetails = () => {
       .then((res) => res.json())
       .then((data) => {
         setContribution(data);
-
         setLoading(false);
       })
       .catch((err) => {
-        console.error("Error loading issue:", err);
+        Swal.fire({
+          position: "top-center",
+          icon: "success",
+          title: `${err.code}`,
+          showConfirmButton: false,
+          timer: 1500,
+        });
         setLoading(false);
       });
   }, [id]);
@@ -59,6 +64,7 @@ const IssueDetails = () => {
     const phone = form.phone.value;
     const address = form.address.value;
     const additionalInfo = form.additionalInfo.value;
+    const category = issue.category;
     const date = new Date().toLocaleDateString();
     const newcontribution = {
       title,
@@ -71,6 +77,7 @@ const IssueDetails = () => {
       date,
       image,
       issueId,
+      category,
     };
     fetch("http://localhost:3000/contribution", {
       method: "POST",
@@ -86,10 +93,11 @@ const IssueDetails = () => {
           const submitContribution = [newcontribution, ...contributions];
           setContribution(submitContribution);
           Swal.fire({
-            title: "Thank You!",
-            text: "Your contribution has been recorded successfully 💚",
+            position: "top-center",
             icon: "success",
-            confirmButtonColor: "#16a34a",
+            title: "Your contribution has been recorded successfully 💚",
+            showConfirmButton: false,
+            timer: 1500,
           });
           setShowModal(false);
         }
@@ -236,36 +244,31 @@ const IssueDetails = () => {
         )}
         <div className="divider mt-10"></div>
       </div>
-      <div className="overflow-x-auto">
-        <table className="table">
-          {/* head */}
-          <thead>
+      <div className="pb-10">
+        <table className="table w-full">
+          <thead className="bg-linear-to-r from-green-600 to-[#00549F] text-white">
             <tr>
-              <th>SN</th>
-              <th>contributor’s image</th>
+              <th>#</th>
+              <th>
+                <span className="hidden md:block">contributor’s</span> image
+              </th>
               <th>name</th>
-              <th>contribution amount</th>
+              <th>
+                <span className="hidden md:block"> contribution</span> amount
+              </th>
             </tr>
           </thead>
           <tbody>
-            {/* row 1 */}
-            {contributions.map((contribution, index) => (
-              <tr key={contribution._id}>
-                <th>{index + 1}</th>
+            {contributions.map((c, index) => (
+              <tr key={c._id} className="hover:bg-gray-50">
+                <td className="font-medium text-gray-700">{index + 1}</td>
                 <td>
-                  <div className="flex items-center gap-3">
-                    <div className="avatar">
-                      <div className="mask mask-squircle h-12 w-12">
-                        <img
-                          src={contribution.image}
-                          alt={contribution.title}
-                        />
-                      </div>
-                    </div>
+                  <div className="mask mask-squircle h-12 w-12">
+                    <img src={c.image} alt="Avatar Tailwind CSS Component" />
                   </div>
                 </td>
-                <td>{contribution.name}</td>
-                <td>{contribution.amount}</td>
+                <td>{c.name}</td>
+                <td className="text-primary font-semibold">৳ {c.amount}</td>
               </tr>
             ))}
           </tbody>
