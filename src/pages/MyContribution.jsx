@@ -6,9 +6,9 @@ import Swal from "sweetalert2";
 import Container from "../Components/Container/Container";
 
 const MyContributions = () => {
-  const { user, loading } = useContext(AuthContext);
+  const { user, loading, setLoading } = useContext(AuthContext);
   const [contributions, setContributions] = useState([]);
-  const [dataLoading, setDataLoading] = useState(true);
+  // const [dataLoading, setDataLoading] = useState(true);
 
   // Fetch contributions for logged-in user
   useEffect(() => {
@@ -17,16 +17,16 @@ const MyContributions = () => {
         .then((res) => res.json())
         .then((data) => {
           setContributions(data);
-          setDataLoading(false);
+          setLoading(false);
         })
         .catch((err) => {
           console.error("Error fetching contributions:", err);
-          setDataLoading(false);
+          setLoading(false);
         });
     }
-  }, [user?.email]);
+  }, [user?.email, setLoading]);
 
-  if (loading || dataLoading) return <Loading />;
+  if (loading) return <Loading></Loading>;
 
   // Handle PDF report download (fake example for now)
   const handleDownload = (contribution) => {
@@ -42,7 +42,7 @@ const MyContributions = () => {
   };
 
   return (
-    <section className=" bg-gray-50 min-h-screen pt-10 px-2.5 lg:px-2.5">
+    <section className=" bg-gray-50 min-h-screen py-10 px-2.5 lg:px-2.5">
       <Container>
         <div>
           <h2 className="text-2xl md:text-3xl font-bold text-center mb-5 text-gray-800">

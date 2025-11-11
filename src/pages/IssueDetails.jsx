@@ -157,8 +157,9 @@ const IssueDetails = () => {
         <div className="text-center">
           <button
             onClick={() => setShowModal(true)}
-            className="btn btn-primary btn-outline text-primary hover:text-white px-6 py-3 rounded-full font-semibold  transition-all"
+            className="btn bg-linear-to-r from-green-600 to-[#00549F] text-white px-6 py-3 rounded-full font-semibold  transition-all"
           >
+             {/* className="w-full btn-outline btn-primary bg-linear-to-r from-green-600 to-[#00549F] text-white py-3 rounded-full transition-all font-semibold" */}
             Pay Clean-Up Contribution
           </button>
         </div>
