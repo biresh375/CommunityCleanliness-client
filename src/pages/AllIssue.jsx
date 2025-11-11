@@ -2,6 +2,7 @@ import React, { use, useEffect } from "react";
 import { AuthContext } from "../Context/AuthContext";
 import IssueCard from "../Components/IssueCard/IssueCard";
 import Container from "../Components/Container/Container";
+import Loading from "../Components/Loading/Loading";
 
 const AllIssue = () => {
   const { issues, setIssues } = use(AuthContext);

@@ -14,7 +14,7 @@ import { auth } from "../Firebase/Firebase.config";
 const AuthProvider = ({ children }) => {
   const googleprovider = new GoogleAuthProvider();
   const [user, setUser] = useState(null); // store user info
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [issues, setIssues] = useState([]);
   const googleSignIn = () => {
     setLoading(true);
@@ -33,7 +33,6 @@ const AuthProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    setLoading(true);
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
       setLoading(false);
