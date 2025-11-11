@@ -1,12 +1,11 @@
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router";
-import { FaMapMarkerAlt } from "react-icons/fa";
-import { MdCategory } from "react-icons/md";
+import React, { use, useEffect } from "react";
+
 import Loading from "../Loading/Loading";
 import IssueCard from "../IssueCard/IssueCard";
+import { AuthContext } from "../../Context/AuthContext";
 
 const RecentComplaints = () => {
-  const [issues, setIssues] = useState([]);
+  const { issues, setIssues } = use(AuthContext);
 
   // Fetch latest 6 issues from MongoDB
   useEffect(() => {
@@ -14,7 +13,7 @@ const RecentComplaints = () => {
       .then((res) => res.json())
       .then((data) => setIssues(data))
       .catch((err) => console.error("Error fetching issues:", err));
-  }, []);
+  }, [setIssues]);
 
   return (
     <section className="py-10">

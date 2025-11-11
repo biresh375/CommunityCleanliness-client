@@ -1,7 +1,7 @@
 import React from "react";
 import { FaMapMarkerAlt } from "react-icons/fa";
-import { MdCategory } from "react-icons/md";
-import { TbCoinTaka } from "react-icons/tb";
+
+import { TbCategory2, TbCoinTaka } from "react-icons/tb";
 import { Link } from "react-router";
 
 const IssueCard = ({ issue }) => {
@@ -23,19 +23,19 @@ const IssueCard = ({ issue }) => {
           <h3 className="text-xl font-semibold text-gray-800 mb-2 line-clamp-1">
             {issue.title}
           </h3>
-          <p className="text-gray-600 text-sm mb-4 line-clamp-2">
+          {/* <p className="text-gray-600 text-sm mb-4 line-clamp-2">
             {issue.description}
-          </p>
+          </p> */}
 
           {/* Category and Location */}
-          <div className="flex justify-between items-center text-gray-500 text-sm mb-4">
+          <div className=" text-gray-500 text-sm mb-3">
             <span className="flex items-center gap-1">
-              <MdCategory className="text-green-500 text-xl" />
+              <TbCategory2 className="text-green-500 text-xl" />
               {issue.category}
             </span>
-            <span className="flex items-center gap-1">
+            <span className="flex items-center gap-1 mt-2">
               <FaMapMarkerAlt className="text-red-500 text-xl" />
-              {issue.location || "Unknown"}
+              {issue?.location || "Unknown"}
             </span>
           </div>
           <p className="text-sm text-gray-500  mb-2 flex items-center gap-1">

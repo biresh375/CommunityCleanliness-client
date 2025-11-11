@@ -15,6 +15,7 @@ const AuthProvider = ({ children }) => {
   const googleprovider = new GoogleAuthProvider();
   const [user, setUser] = useState(null); // store user info
   const [loading, setLoading] = useState(false);
+  const [issues, setIssues] = useState([]);
   const googleSignIn = () => {
     setLoading(true);
     return signInWithPopup(auth, googleprovider);
@@ -55,6 +56,8 @@ const AuthProvider = ({ children }) => {
     singIn,
     update,
     creatUser,
+    setIssues,
+    issues,
   };
   return (
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>
