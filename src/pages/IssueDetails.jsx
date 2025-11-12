@@ -116,7 +116,7 @@ const IssueDetails = () => {
       </Helmet>
       <div className=" mx-auto py-10 px-5 md:px-2.5 lg:px-0 ">
         {/* Header */}
-        <h1 className="text-2xl md:text-3xl font-bold text-gray-800 mb-5">
+        <h1 className="text-2xl md:text-3xl font-bold  mb-5">
           {issue?.title}
         </h1>
 
@@ -131,27 +131,27 @@ const IssueDetails = () => {
 
         {/* Info Section */}
         <div className="space-y-4 mb-8">
-          <p className="flex items-center gap-2 text-gray-700">
+          <p className="flex items-center gap-2 ">
             <TbCategory2 className="text-green-600 text-xl" />{" "}
             <span className="font-medium">Category:</span> {issue?.category}
           </p>
 
-          <p className="flex items-center gap-2 text-gray-700">
+          <p className="flex items-center gap-2 ">
             <FaMapMarkerAlt className="text-red-600 text-xl" />{" "}
             <span className="font-medium">Location:</span> {issue?.location}
           </p>
 
-          <p className="text-gray-700">
+          <p className="">
             <span className="font-medium">Description:</span>{" "}
             {issue?.description}
           </p>
 
-          <p className="text-gray-700">
+          <p className="">
             <span className="font-medium">Date:</span>{" "}
             {new Date(issue?.date).toLocaleDateString()}
           </p>
 
-          <p className="text-gray-700">
+          <p className="">
             <span className="font-medium">Estimated Clean-Up Cost:</span>{" "}
             <span className="text-primary font-semibold">
               ৳ {issue?.amount || 0}
@@ -241,7 +241,7 @@ const IssueDetails = () => {
 
                 <button
                   type="submit"
-                  className="w-full bg-green-600 text-white py-2 rounded-full hover:bg-green-700 transition-colors"
+                  className="w-full bg-linear-to-r from-green-600 to-[#00549F] text-white py-2 rounded-full cursor-pointer transition-colors"
                 >
                   Confirm Payment
                 </button>

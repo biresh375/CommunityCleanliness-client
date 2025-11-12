@@ -4,6 +4,7 @@ import Container from "../Container/Container";
 import BannerSection from "../BannerSection/BannerSection";
 import RecentComplaints from "../RecentComplaints/RecentComplaints";
 import { Helmet } from "react-helmet";
+import JoinCleanDrive from "../JoinCleanDrive/JoinCleanDrive";
 
 const Home = () => {
   return (
@@ -17,6 +18,7 @@ const Home = () => {
       <Container>
         <CategorySection></CategorySection>
         <RecentComplaints></RecentComplaints>
+        <JoinCleanDrive></JoinCleanDrive>
       </Container>
     </div>
   );

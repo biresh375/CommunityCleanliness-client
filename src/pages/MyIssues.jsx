@@ -108,14 +108,14 @@ const MyIssues = () => {
   };
 
   return (
-    <section className="py-10 mx-auto">
+    <section className=" min-h-96 py-10 mx-auto">
       <Helmet>
         <meta charSet="utf-8" />
         <title>My issues |communitycleanliness</title>
         <link rel="canonical" href="http://mysite.com/example" />
       </Helmet>
 
-      <h2 className="text-2xl md:text-3xl font-bold text-center mb-8 text-gray-800">
+      <h2 className="text-2xl md:text-3xl font-bold text-center mb-8 text-green-600">
         My <span className="text-primary">Reported Issues</span>
       </h2>
       <Container>

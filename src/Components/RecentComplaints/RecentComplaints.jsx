@@ -18,7 +18,7 @@ const RecentComplaints = () => {
   return (
     <section className="py-10">
       <div>
-        <h2 className="text-2xl md:text-3xl font-bold text-center text-gray-800 mb-5">
+        <h2 className="text-2xl md:text-3xl font-bold text-center text-green-600 mb-5">
           Recent <span className="text-primary">Complaints</span>
         </h2>
 

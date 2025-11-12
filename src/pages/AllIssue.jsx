@@ -25,7 +25,7 @@ const AllIssue = () => {
       </Helmet>
       <section className="py-10">
         <div>
-          <h2 className="text-2xl md:text-3xl font-bold  text-gray-800 mb-5">
+          <h2 className="text-2xl md:text-3xl font-bold  text-green-600 mb-5">
             All <span className="text-primary">Issues :</span>
           </h2>
 

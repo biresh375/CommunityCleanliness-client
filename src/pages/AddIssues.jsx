@@ -74,14 +74,14 @@ const AddIssues = () => {
   };
 
   return (
-    <section className="py-10 bg-linear-to-b from-gray-50 to-white">
+    <section className="py-10 bg-linear-to-b ">
       <Helmet>
         <meta charSet="utf-8" />
         <title>Report New Issue |communitycleanliness</title>
         <link rel="canonical" href="http://mysite.com/example" />
       </Helmet>
       <div className="container mx-auto px-5 max-w-3xl bg-white rounded-2xl shadow-lg p-8">
-        <h2 className="text-3xl font-bold text-center mb-5 text-gray-800">
+        <h2 className="text-3xl font-bold text-center mb-5 text-green-600">
           Report a <span className="text-primary">New Issue</span>
         </h2>
 
@@ -185,7 +185,7 @@ const AddIssues = () => {
               name="email"
               readOnly
               defaultValue={user?.email}
-              className="input input-bordered w-full bg-gray-100"
+              className="input input-bordered w-full "
             />
           </div>
 

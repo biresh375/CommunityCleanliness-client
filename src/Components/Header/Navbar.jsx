@@ -6,6 +6,8 @@ import Container from "../Container/Container";
 import { RiArrowDropRightFill } from "react-icons/ri";
 import { AuthContext } from "../../Context/AuthContext";
 import Swal from "sweetalert2";
+import ThemeToggle from "./Header";
+
 const Navbar = () => {
   const { user, logOut } = use(AuthContext);
   const navLinks = (
@@ -22,6 +24,15 @@ const Navbar = () => {
           <RiArrowDropRightFill />
         </NavLink>
       </li>
+      {!user && (
+        <>
+          <li>
+            <div className="flex-none mr-3 ">
+              <ThemeToggle />
+            </div>
+          </li>
+        </>
+      )}
 
       {user && (
         <>
@@ -42,6 +53,11 @@ const Navbar = () => {
               My Contribution
               <RiArrowDropRightFill />
             </NavLink>
+          </li>
+          <li>
+            <div className="flex-none mr-25">
+              <ThemeToggle />
+            </div>
           </li>
         </>
       )}
@@ -64,11 +80,11 @@ const Navbar = () => {
   };
 
   return (
-    <div className=" bg-[#EEEEEE] shadow-sm">
+    <div className=" bg-[#eeeeee79] shadow-sm">
       <Container>
         <div className="navbar">
           <div className="navbar-start">
-            <div className="dropdown">
+            <div className="dropdown ">
               <div
                 tabIndex={0}
                 role="button"
@@ -92,7 +108,7 @@ const Navbar = () => {
               </div>
               <ul
                 tabIndex="-1"
-                className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
+                className="menu menu-sm dropdown-content bg-linear-to-r from-green-600 to-[#00549F]  rounded-box z-100 mt-3 w-50 p-2 shadow"
               >
                 {navLinks}
               </ul>
@@ -133,13 +149,14 @@ const Navbar = () => {
                   </div>
                   <ul
                     tabIndex={0}
-                    className="menu dropdown-content bg-white rounded-box w-52 mt-3 shadow"
+                    className="menu dropdown-content  bg-linear-to-r from-green-600 to-[#00549F] rounded-box w-52 mt-3 shadow"
                   >
                     <li>
-                      <p className="text-sm font-semibold px-3">
+                      <p className="text-sm text-white font-semibold px-3">
                         {user.displayName}
                       </p>
                     </li>
+
                     <li>
                       <button
                         onClick={handleLogout}

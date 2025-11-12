@@ -64,7 +64,7 @@ const MyContributions = () => {
   };
 
   return (
-    <section className=" bg-gray-50 min-h-screen py-10 px-2.5 lg:px-2.5">
+    <section className="  min-h-96 py-10 px-2.5 lg:px-2.5">
       <Helmet>
         <meta charSet="utf-8" />
         <title>My Contribution | communitycleanliness</title>
@@ -72,7 +72,7 @@ const MyContributions = () => {
       </Helmet>
       <Container>
         <div>
-          <h2 className="text-2xl md:text-3xl font-bold text-center mb-5 text-gray-800">
+          <h2 className="text-2xl md:text-3xl font-bold text-center mb-5 text-green-600">
             My <span className="text-primary">Contributions</span>
           </h2>
 
