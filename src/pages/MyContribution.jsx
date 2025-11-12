@@ -4,13 +4,15 @@ import Loading from "../Components/Loading/Loading";
 import { FaDownload } from "react-icons/fa";
 import Swal from "sweetalert2";
 import Container from "../Components/Container/Container";
+import { Helmet } from "react-helmet";
+
+import jsPDF from "jspdf";
+import "jspdf-autotable";
 
 const MyContributions = () => {
   const { user, loading, setLoading } = useContext(AuthContext);
   const [contributions, setContributions] = useState([]);
-  // const [dataLoading, setDataLoading] = useState(true);
 
-  // Fetch contributions for logged-in user
   useEffect(() => {
     if (user?.email) {
       fetch(`http://localhost:3000/contribution?email=${user.email}`)
@@ -28,21 +30,46 @@ const MyContributions = () => {
 
   if (loading) return <Loading></Loading>;
 
-  // Handle PDF report download (fake example for now)
-  const handleDownload = (contribution) => {
+  // Handle PDF report download
+  const handleDownload = (c) => {
+    const doc = new jsPDF();
+
+    // Header
+    doc.text("My Contribution Report", 14, 15);
+    doc.text(`User: ${user.email}`, 14, 25);
+
+    // Table column titles
+    const tableColumn = ["Issue Title", "Category", "Amount (৳)", "Date"];
+
+    // Table data rows
+    const tableRows = [[c.title, c.category, c.amount, c.date]];
+
+    // ✅ এখানে সঠিকভাবে autoTable() ব্যবহার করো
+    doc.autoTable({
+      head: [tableColumn],
+      body: tableRows,
+      startY: 35,
+    });
+
+    // ✅ Save PDF
+    doc.save(`contribution_report_${user.email}.pdf`);
+
+    // ✅ SweetAlert message
     Swal.fire({
       title: "Report Downloaded!",
-      text: `Report for "${contribution.title}" successfully generated.`,
+      text: `Your contribution report has been generated successfully.`,
       icon: "success",
       confirmButtonColor: "#16a34a",
     });
-
-    // You can later replace this with an actual backend PDF route, e.g.:
-    // window.open(`http://localhost:3000/contribution/report/${contribution._id}`);
   };
 
   return (
     <section className=" bg-gray-50 min-h-screen py-10 px-2.5 lg:px-2.5">
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>My Contribution | communitycleanliness</title>
+        <link rel="canonical" href="http://mysite.com/example" />
+      </Helmet>
       <Container>
         <div>
           <h2 className="text-2xl md:text-3xl font-bold text-center mb-5 text-gray-800">

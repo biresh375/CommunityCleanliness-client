@@ -6,7 +6,7 @@
   name: "light";
   default: true;
   --color-primary: #00549f;
-  --color-secondary: #e7f7fe;
+  --color-secondary: #eeeeee;
 }
 /* @plugin "daisyui" {
   themes: light --default, dark --prefersdark;
@@ -18,8 +18,8 @@
   font-weight: 400;
   font-style: normal;
 }
-.active{
+.active {
   font-weight: 600;
   text-decoration: underline;
-  color: #00549F;
+  color: #00549f;
 }

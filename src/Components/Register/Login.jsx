@@ -86,8 +86,8 @@ const Login = () => {
     setShow(!show);
   };
   return (
-    <div className="flex justify-center  mt-10 items-center">
-      <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
+    <div className="flex justify-center  my-10 items-center">
+      <div className="card bg-base-500 w-full max-w-sm shrink-0 shadow-2xl">
         <p className="pt-2.5 text-2xl font-semibold text-center">
           Login your account
         </p>

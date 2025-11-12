@@ -3,6 +3,7 @@ import { AuthContext } from "../Context/AuthContext";
 import IssueCard from "../Components/IssueCard/IssueCard";
 import Container from "../Components/Container/Container";
 import Loading from "../Components/Loading/Loading";
+import { Helmet } from "react-helmet";
 
 const AllIssue = () => {
   const { issues, setIssues } = use(AuthContext);
@@ -17,6 +18,11 @@ const AllIssue = () => {
 
   return (
     <Container>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>All Issues |communitycleanliness</title>
+        <link rel="canonical" href="http://mysite.com/example" />
+      </Helmet>
       <section className="py-10">
         <div>
           <h2 className="text-2xl md:text-3xl font-bold  text-gray-800 mb-5">

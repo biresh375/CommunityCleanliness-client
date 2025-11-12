@@ -3,6 +3,7 @@ import { AuthContext } from "../Context/AuthContext";
 import Swal from "sweetalert2";
 import Loading from "../Components/Loading/Loading";
 import Container from "../Components/Container/Container";
+import { Helmet } from "react-helmet";
 
 const MyIssues = () => {
   const { user, loading } = useContext(AuthContext);
@@ -108,6 +109,12 @@ const MyIssues = () => {
 
   return (
     <section className="py-10 mx-auto">
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>My issues |communitycleanliness</title>
+        <link rel="canonical" href="http://mysite.com/example" />
+      </Helmet>
+
       <h2 className="text-2xl md:text-3xl font-bold text-center mb-8 text-gray-800">
         My <span className="text-primary">Reported Issues</span>
       </h2>

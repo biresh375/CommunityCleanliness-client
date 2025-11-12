@@ -8,6 +8,7 @@ import { AuthContext } from "../Context/AuthContext";
 import Container from "../Components/Container/Container";
 import { TbCategory2 } from "react-icons/tb";
 import Loading from "../Components/Loading/Loading";
+import { Helmet } from "react-helmet";
 
 const IssueDetails = () => {
   const { id } = useParams();
@@ -108,6 +109,11 @@ const IssueDetails = () => {
 
   return (
     <Container>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Issue Details | communitycleanliness</title>
+        <link rel="canonical" href="http://mysite.com/example" />
+      </Helmet>
       <div className=" mx-auto py-10 px-5 md:px-2.5 lg:px-0 ">
         {/* Header */}
         <h1 className="text-2xl md:text-3xl font-bold text-gray-800 mb-5">
@@ -159,7 +165,7 @@ const IssueDetails = () => {
             onClick={() => setShowModal(true)}
             className="btn bg-linear-to-r from-green-600 to-[#00549F] text-white px-6 py-3 rounded-full font-semibold  transition-all"
           >
-             {/* className="w-full btn-outline btn-primary bg-linear-to-r from-green-600 to-[#00549F] text-white py-3 rounded-full transition-all font-semibold" */}
+            {/* className="w-full btn-outline btn-primary bg-linear-to-r from-green-600 to-[#00549F] text-white py-3 rounded-full transition-all font-semibold" */}
             Pay Clean-Up Contribution
           </button>
         </div>

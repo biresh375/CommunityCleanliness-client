@@ -11,7 +11,7 @@ const Navbar = () => {
   const navLinks = (
     <>
       <li>
-        <NavLink to="/" className="hover:text-primary">
+        <NavLink to="/" className=" hover:text-primary">
           Home
           <RiArrowDropRightFill />
         </NavLink>
@@ -64,7 +64,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className=" bg-secondary shadow-sm">
+    <div className=" bg-[#EEEEEE] shadow-sm">
       <Container>
         <div className="navbar">
           <div className="navbar-start">

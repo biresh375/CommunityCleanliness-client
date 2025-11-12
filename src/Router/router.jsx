@@ -9,6 +9,7 @@ import MyIssues from "../pages/MyIssues";
 import MyContribution from "../pages/MyContribution";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import IssueDetails from "../pages/IssueDetails";
+import ErrorPage from "../Components/ErrorPage/ErrorPage";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -63,6 +64,10 @@ const router = createBrowserRouter([
         ),
       },
     ],
+  },
+  {
+    path: "/*",
+    element: <ErrorPage></ErrorPage>,
   },
 ]);
 export default router;

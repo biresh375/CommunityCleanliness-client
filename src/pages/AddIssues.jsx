@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import { AuthContext } from "../Context/AuthContext";
 import Swal from "sweetalert2";
 import Loading from "../Components/Loading/Loading";
+import { Helmet } from "react-helmet";
 
 const AddIssues = () => {
   const { user, loading } = useContext(AuthContext);
@@ -74,6 +75,11 @@ const AddIssues = () => {
 
   return (
     <section className="py-10 bg-linear-to-b from-gray-50 to-white">
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Report New Issue |communitycleanliness</title>
+        <link rel="canonical" href="http://mysite.com/example" />
+      </Helmet>
       <div className="container mx-auto px-5 max-w-3xl bg-white rounded-2xl shadow-lg p-8">
         <h2 className="text-3xl font-bold text-center mb-5 text-gray-800">
           Report a <span className="text-primary">New Issue</span>
