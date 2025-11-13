@@ -21,7 +21,9 @@ const IssueDetails = () => {
 
   useEffect(() => {
     setLoading(true);
-    fetch(`http://localhost:3000/allIssues/${id}`)
+    fetch(
+      `https://community-cleanliness-server-three.vercel.app/allIssues/${id}`
+    )
       .then((res) => res.json())
       .then((data) => {
         setIssue(data);
@@ -35,7 +37,9 @@ const IssueDetails = () => {
 
   useEffect(() => {
     setLoading(true);
-    fetch(`http://localhost:3000/issue/contribution/${id}`)
+    fetch(
+      `https://community-cleanliness-server-three.vercel.app/issue/contribution/${id}`
+    )
       .then((res) => res.json())
       .then((data) => {
         setContribution(data);
@@ -80,13 +84,16 @@ const IssueDetails = () => {
       issueId,
       category,
     };
-    fetch("http://localhost:3000/contribution", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(newcontribution),
-    })
+    fetch(
+      "https://community-cleanliness-server-three.vercel.app/contribution",
+      {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(newcontribution),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data.insertedId) {
@@ -116,9 +123,7 @@ const IssueDetails = () => {
       </Helmet>
       <div className=" mx-auto py-10 px-5 md:px-2.5 lg:px-0 ">
         {/* Header */}
-        <h1 className="text-2xl md:text-3xl font-bold  mb-5">
-          {issue?.title}
-        </h1>
+        <h1 className="text-2xl md:text-3xl font-bold  mb-5">{issue?.title}</h1>
 
         {/* Image */}
         <div className="rounded-xl overflow-hidden shadow-md mb-6">

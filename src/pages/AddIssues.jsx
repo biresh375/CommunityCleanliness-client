@@ -39,7 +39,7 @@ const AddIssues = () => {
     };
 
     // Save to MongoDB (Backend API)
-    fetch("http://localhost:3000/issues", {
+    fetch("https://community-cleanliness-server-three.vercel.app/issues", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(newIssue),

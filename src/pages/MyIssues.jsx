@@ -15,7 +15,9 @@ const MyIssues = () => {
   // Fetch issues
   useEffect(() => {
     if (user?.email) {
-      fetch(`http://localhost:3000/allIssues?email=${user.email}`)
+      fetch(
+        `https://community-cleanliness-server-three.vercel.app/allIssues?email=${user.email}`
+      )
         .then((res) => res.json())
         .then((data) => setMyIssues(data))
         .catch((err) =>
@@ -44,9 +46,12 @@ const MyIssues = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:3000/allIssues/${id}`, {
-          method: "DELETE",
-        })
+        fetch(
+          `https://community-cleanliness-server-three.vercel.app/allIssues/${id}`,
+          {
+            method: "DELETE",
+          }
+        )
           .then((res) => res.json())
           .then((data) => {
             if (data.deletedCount > 0) {
@@ -80,11 +85,14 @@ const MyIssues = () => {
       status: form.status.value,
     };
 
-    fetch(`http://localhost:3000/allIssues/${selectedIssue._id}`, {
-      method: "PATCH",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(updatedIssue),
-    })
+    fetch(
+      `https://community-cleanliness-server-three.vercel.app/allIssues/${selectedIssue._id}`,
+      {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(updatedIssue),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         setUpdating(false);

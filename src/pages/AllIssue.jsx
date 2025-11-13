@@ -10,7 +10,7 @@ const AllIssue = () => {
 
   // Fetch latest 6 issues from MongoDB
   useEffect(() => {
-    fetch("http://localhost:3000/allIssues")
+    fetch("https://community-cleanliness-server-three.vercel.app/allIssues")
       .then((res) => res.json())
       .then((data) => setIssues(data))
       .catch((err) => console.error("Error fetching issues:", err));

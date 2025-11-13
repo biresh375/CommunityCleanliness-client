@@ -9,7 +9,7 @@ const RecentComplaints = () => {
 
   // Fetch latest 6 issues from MongoDB
   useEffect(() => {
-    fetch("http://localhost:3000/issues")
+    fetch("https://community-cleanliness-server-three.vercel.app/issues")
       .then((res) => res.json())
       .then((data) => setIssues(data))
       .catch((err) => console.error("Error fetching issues:", err));
